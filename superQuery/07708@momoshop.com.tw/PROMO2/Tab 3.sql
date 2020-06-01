@@ -59,9 +59,13 @@ pair_goods as --贈品的搭配品
   SELECT  goods_code,wh_code,cast(sum(AQTY)-sum(BQTY)+sum(BALJU_QTY) as  int64) as stockcount
   FROM `momo-develop.embulkUpload.TSTOCK`
   where goods_code in (select * from p_notset union all select * from p_set)
---   and rpt_date = DATE_SUB(current_Date(), INTERVAL 1 DAY) 
   group by goods_code,wh_code
   having stockcount>0
 )
+,pre_impact as
+(
+  select pair_goods.promo_no,pair_goods.GOODS_CODE,stock2.stockcount ,stock2.wh_code  
+  from pair_goods join stock2 on pair_goods.GOODS_CODE =stock2.goods_code 
+)
 
-select * from stock2
+select * from pre_impact
