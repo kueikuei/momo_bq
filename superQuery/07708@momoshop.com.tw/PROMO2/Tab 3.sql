@@ -54,5 +54,14 @@ pair_goods as --贈品的搭配品
   from  `momo-develop.oggSync.TSETGOODS` AS TSET 
   where TSET.GOODS_CODE IN( select distinct goods_code from  pair_goods where SET_YN='1' ) 
 )
+,stock2 as 
+(
+  SELECT  goods_code,wh_code,cast(sum(AQTY)-sum(BQTY)+sum(BALJU_QTY) as  int64) as stockcount
+  FROM `momo-develop.embulkUpload.TSTOCK`
+  where goods_code in (select * from p_notset union all select * from p_set)
+--   and rpt_date = DATE_SUB(current_Date(), INTERVAL 1 DAY) 
+  group by goods_code,wh_code
+  having stockcount>0
+)
 
-select * from p_set
+select * from stock2
