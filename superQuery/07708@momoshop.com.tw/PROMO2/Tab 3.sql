@@ -64,8 +64,11 @@ pair_goods as --贈品的搭配品
 )
 ,pre_impact as
 (
-  select pair_goods.promo_no,pair_goods.GOODS_CODE,stock2.stockcount ,stock2.wh_code  
+--   select pair_goods.promo_no,pair_goods.GOODS_CODE,stock2.stockcount ,stock2.wh_code  
+  select promo_no,wh_code,sum(stockcount) as impact_count
   from pair_goods join stock2 on pair_goods.GOODS_CODE =stock2.goods_code 
+  group by promo_no,wh_code
+  ORDER BY WH_CODE
 )
 
 select * from pre_impact
