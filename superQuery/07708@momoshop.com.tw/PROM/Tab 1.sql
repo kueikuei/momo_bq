@@ -1,0 +1,1 @@
+SELECT *FROM `momo-develop.oggSync.PROMO_DT` LIMIT 1000
