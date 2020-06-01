@@ -47,7 +47,12 @@ pair_goods as --贈品的搭配品
 ,p_notset as 
 (
   select distinct goods_code from  pair_goods where SET_YN='0'
-
+)
+,p_set as 
+(
+  select distinct IN_GOODS_CODE  as goods_code 
+  from  `momo-develop.oggSync.TSETGOODS` AS TSET 
+  where TSET.GOODS_CODE IN( select distinct goods_code from  pair_goods where SET_YN='1' ) 
 )
 
-select * from p_notset
+select * from p_set
