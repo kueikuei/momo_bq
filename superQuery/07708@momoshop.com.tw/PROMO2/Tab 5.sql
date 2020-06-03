@@ -24,6 +24,6 @@ WITH Input AS (
   SELECT STRUCT(NULL, 2 AS bar, STRUCT('fizz' AS x, 1.59 AS foo) AS baz) AS s, NULL AS foo
 )
 SELECT
---   TO_JSON_STRING(t) AS json_row,
+  TO_JSON_STRING(t) AS json_row,
   SumFieldsNamedFoo(TO_JSON_STRING(t)) AS foo_sum
 FROM Input AS t
