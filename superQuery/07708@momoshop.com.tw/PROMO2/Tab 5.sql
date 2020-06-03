@@ -1,11 +1,13 @@
-CREATE TEMP FUNCTION addFourAndDivide(x INT64, y INT64) AS ((x + 4) / y);
+CREATE TEMP FUNCTION multiplyInputs(x FLOAT64, y FLOAT64)
+RETURNS FLOAT64
+LANGUAGE js AS """
+  return x*y;
+""";
 WITH numbers AS
-  (SELECT 1 as val
+  (SELECT 1 AS x, 5 as y
   UNION ALL
-  SELECT 3 as val
+  SELECT 2 AS x, 10 as y
   UNION ALL
-  SELECT 4 as val
-  UNION ALL
-  SELECT 5 as val)
-SELECT val, addFourAndDivide(val, 2) AS result
+  SELECT 3 as x, 15 as y)
+SELECT x, y, multiplyInputs(x, y) as product
 FROM numbers
