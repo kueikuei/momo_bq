@@ -14,11 +14,15 @@ t4 as (
     select t1.* ,t2.ct, t2.isSameBrand_chi
     from t1 as t1
     left join t2 on t1.orderNo = t2.orderNo
-)
-
-
+),
+t5 as (
 select *,(t1ct-ct) as num from t4
 where isSameBrand_chi = 1
+)
+
+select * from t5
+where num = 0
+
 
 
 -- SELECT 
