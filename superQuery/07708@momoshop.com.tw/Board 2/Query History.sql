@@ -15,6 +15,6 @@ with data as
 )
 
 select g,group_count,group_percent from data
-where combine_self != false
+where combine_self != false AND g = '理膚寶水'
 order by group_percent desc
 -- limit 100
