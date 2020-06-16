@@ -3,7 +3,6 @@ WITH t1 as (
     where 
         brand_chi LIKE '%理膚寶水%' AND 
         delyType = '乙配' AND
-        date(orderdate) BETWEEN '2020-03-15'  AND '2020-06-15'
     GROUP BY orderNo
 )
 
