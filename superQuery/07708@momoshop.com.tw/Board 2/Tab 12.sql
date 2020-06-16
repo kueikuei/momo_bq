@@ -7,11 +7,16 @@ WITH t1 as (
 ),
 t2 AS(
     select t2.orderNo,count(*) from `momo-develop.boxSaver.regularQC_slipInfo_3m` as t2
-    left join  t1 on t1.orderNo = t2.orderNo AND t2.orderNo = '20200613232966'
+    left join  t1 on t1.orderNo = t2.orderNo 
     GROUP BY t2.orderNo
 )
+,
+t3 AS (
+    select * from t2
+    where orderNo = '20200613232966'
+)
 
-select * from t2
+select * from t3
 
 
 -- where date(orderdate)=DATE_ADD(CURRENT_DATE(), INTERVAL -1 DAY) and delytype='乙配'
