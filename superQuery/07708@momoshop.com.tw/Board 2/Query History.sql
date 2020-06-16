@@ -14,7 +14,7 @@ with data as
   FROM `momo-develop.unboxing.combine_brandname_0615`  as t
 )
 
-select g,group_count,group_percent from data
+select * from data
 where combine_self != false AND g = '理膚寶水'
 order by group_percent desc
 -- limit 100
