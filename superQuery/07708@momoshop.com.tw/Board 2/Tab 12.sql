@@ -2,7 +2,7 @@ WITH t1 as (
     select orderNo,count(*) from `momo-develop.boxSaver.regularQC_slipInfo_3m`
     where 
         brand_chi LIKE '%理膚寶水%' AND 
-        delyType = '乙配' AND
+        delyType = '乙配' 
     GROUP BY orderNo
 )
 
