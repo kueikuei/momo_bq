@@ -1,5 +1,5 @@
 WITH t1 as (
-    select orderNo,count(*) from `momo-develop.boxSaver.regularQC_slipInfo_3m`
+    select orderNo,count(*) as t1ct from `momo-develop.boxSaver.regularQC_slipInfo_3m`
     where 
         brand_chi LIKE '%理膚寶水%' AND 
         delyType = '乙配' 
@@ -17,7 +17,7 @@ t4 as (
 )
 
 
-select * from t4
+select *,(t1ct-ct) as num from t4
 where isSameBrand_chi = 1
 
 
