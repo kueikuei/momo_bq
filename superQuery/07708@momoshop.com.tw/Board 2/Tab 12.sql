@@ -1,4 +1,4 @@
-select orderNo,count(*) from `momo-develop.boxSaver.slipInfo`
+select orderNo from `momo-develop.boxSaver.slipInfo`
 where 
     brand_chi = '理膚寶水' AND 
     delyType = '乙配' AND
