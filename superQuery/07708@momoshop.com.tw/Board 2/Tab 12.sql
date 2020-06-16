@@ -13,7 +13,7 @@ t2 AS(
 ,
 t3 AS (
     select * from t2
-    where orderNo = '20200613232966'
+    where orderNo = '20200613232966' AND orderNo =  '20200613434446' AND orderNo = '20200613174177' AND orderNo = '20200613377247'
 )
 
 select * from t3
