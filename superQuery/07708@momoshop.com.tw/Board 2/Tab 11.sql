@@ -9,9 +9,9 @@ SELECT 2 AS Row, 20 AS Value UNION ALL
 SELECT 3 AS Row, 30 AS Value 
 )
 SELECT 
- ttt.*
+ ttt.*,Table_R.Value
 FROM Table_L as ttt
-left join Table_R on ttt.Row = Table_R.Row
+left join Table_R  on ttt.Row = Table_R.Row
 
 -- select * from Table_R
 
