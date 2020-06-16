@@ -7,13 +7,13 @@ WITH t1 as (
 ),
 t2 AS(
     select t2.orderNo,count(*), count(distinct t2.brand_chi) as isSameBrand_chi from `momo-develop.boxSaver.regularQC_slipInfo_3m` as t2
-    left join  t1 on t1.orderNo = t2.orderNo 
     GROUP BY t2.orderNo
 )
 ,
 t3 AS (
-    select * from t2
-    where isSameBrand_chi = 1
+    select struct(t1.orderNo ) from t1
+    -- where isSameBrand_chi = 1
+    -- where t2.orderNo in UNNEST(t1.orderNo)
 )
 
 select * from t3
