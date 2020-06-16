@@ -13,7 +13,7 @@ SELECT 3 AS Row, 30 AS Value
 -- FROM Table_L as ttt
 -- left join Table_R on Table_R.Row = Table_L.Row
 
-select * from 
+select * from Table_R
 
 -- SELECT * FROM Roster LEFT JOIN TeamMascot
 -- ON Roster.SchoolID = TeamMascot.SchoolID;
