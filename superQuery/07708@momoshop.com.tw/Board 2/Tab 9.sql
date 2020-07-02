@@ -1,28 +1,17 @@
-CREATE TEMP FUNCTION brandname(brand_chi STRING,brand_eng STRING,goodsName STRING,entpName STRING)
-RETURNS STRING
-LANGUAGE js AS """
-  var returnString = "";
-  if ((brand_chi !== "其他" && brand_chi !== ""  && brand_chi !== null) ) 
-  {
-    returnString = brand_chi;
-  }
-  else if( brand_eng !== "" && brand_eng !==  null )
-  {
-    returnString = brand_eng;
-  }  
-  else {
-     returnString = entpName;
-  }
-      return returnString;
-"""; 
-select * from 
+WITH gift as --挑選贈品
 (
-select orderno,array_agg(brandname) as agg_brand from 
-(
-select  t.orderNo,brandname(brand_chi,brand_eng,goodsName,entpName) as brandname 
-FROM boxSaver.regularQC_slipInfo_3m  as t
+
+  SELECT DISTINCT PDT.PROMO_NO,PM.PROMO_NAME,PDT.INSERT_ID,
+  PDT.INSERT_DATE,PM.PROMO_START_DATE,PM.PROMO_END_DATE,
+  PDT.GOODS_CODE,TG.GOODS_NAME
+  FROM `momo-develop.oggSync.PROMO_DT`  as PDT ,`momo-develop.oggSync.PROMO_M` AS PM  ,`momo-develop.oggSync.TGOODS` AS TG ,`momo-develop.oggSync.TF_GOODS` AS TFG
+  where  date(PDT.INSERT_DATE)=CURRENT_DATE() and prefer_type='5' and PM.PROMO_NO =PDT.PROMO_NO and PDT.GOODS_CODE =TG.GOODS_CODE  AND TG.DELY_TYPE='10'
+  AND NOT (PM.PROMO_NAME LIKE '%登記%' OR PM.PROMO_NAME LIKE '%紅利金%')
+  AND PDT.GOODS_CODE IS NOT NULL
+  AND PDT.GOODS_CODE =TFG.GOODS_CODE
+--   AND TFG.ONLY_OUT_FLAG <> '1'
+
+  ORDER BY INSERT_DATE
 )
-group by orderno
-having array_length(agg_brand)=1
-) as t , unnest(t.agg_brand) as t1
-where t1='理膚寶水'
+
+select * from gift
