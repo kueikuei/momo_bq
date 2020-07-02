@@ -5,7 +5,7 @@ select goods_code,array_agg(wh_code) as stock_whcode,array_agg(stockcount) as st
   where goods_code in (select goods_code from  `momo-develop.unboxing.dynamic_gift_temp` )
 --   and rpt_date = DATE_SUB(current_Date(), INTERVAL 1 DAY) 
   group by goods_code,wh_code
-  having stockcount>0
+--   having stockcount>0
   ORDER BY WH_CODE
   ) 
   group by goods_code
