@@ -1,28 +1,11 @@
-CREATE TEMP FUNCTION brandname(brand_chi STRING,brand_eng STRING,goodsName STRING,entpName STRING)
-RETURNS STRING
-LANGUAGE js AS """
-  var returnString = "";
-  if ((brand_chi !== "其他" && brand_chi !== ""  && brand_chi !== null) ) 
-  {
-    returnString = brand_chi;
-  }
-  else if( brand_eng !== "" && brand_eng !==  null )
-  {
-    returnString = brand_eng;
-  }  
-  else {
-     returnString = entpName;
-  }
-      return returnString;
-"""; 
-select * from 
-(
-select orderno,array_agg(brandname) as agg_brand from 
-(
-select  t.orderNo,brandname(brand_chi,brand_eng,goodsName,entpName) as brandname 
-FROM boxSaver.regularQC_slipInfo_3m  as t
-)
-group by orderno
-having array_length(agg_brand)=1
-) as t 
--- where t1='理膚寶水'
+select goods_code,array_agg(wh_code) as stock_whcode,array_agg(stockcount) as stockcount from 
+  (
+  SELECT  goods_code,wh_code, cast(sum(AQTY)-sum(BQTY)+sum(BALJU_QTY) as  int64) as stockcount
+  FROM `momo-develop.embulkUpload.TSTOCK`
+  where goods_code in (select goods_code from  `momo-develop.unboxing.dynamic_gift_temp` )
+--   and rpt_date = DATE_SUB(current_Date(), INTERVAL 1 DAY) 
+  group by goods_code,wh_code
+  having stockcount>0
+  ORDER BY WH_CODE
+  ) 
+  group by goods_code
