@@ -1,5 +1,5 @@
--- CREATE TEMP TABLE Example
--- as 
+CREATE TEMP TABLE Example2
+as 
 -- 去掉永久終止、甲配商品
 WITH tgoods as(
     SELECT GOODS_CODE
@@ -55,13 +55,23 @@ goodsSlipHistoryList2 as (
         -- ROW_NUMBER() OVER (ORDER BY order_3m_Sum DESC) AS Order_3m_Row_Num,
         *
     from goodsSlipHistoryList2
-)
-select 
-    RANK() OVER (ORDER BY order_3m_Sum DESC) AS rank,
-    PERCENT_RANK() OVER (ORDER BY order_3m_Sum DESC) AS dense_rank ,
-    CUME_DIST() OVER (ORDER BY order_3m_Sum DESC) AS cume_dist ,
+)select 
+    RANK() OVER (ORDER BY order_3m_Sum DESC) AS Order_3m_Row_Sum_Rank,
+    RANK() OVER (ORDER BY Order_1y_Sum DESC) AS Order_1y_Row_SumRank,
     *
-from hotAndLongtailGoods limit 1000
+    from hotAndLongtailGoods;
+
+SELECT 
+case when Order_3m_Row_Sum_Rank<(select count(*) from Example2  ) * 0.2 then 1 
+when Order_3m_Row_Sum_Rank>(select count(*) from Example2  ) * 0.8 then -1 
+else 0 end as Order_3m_Row_Sum_Rank_ResRate,
+case when Order_1y_Row_SumRank<(select count(*) from Example2  ) * 0.2 then 1 
+when Order_1y_Row_SumRank>(select count(*) from Example2  ) * 0.8 then -1 
+else 0 end as Order_1y_Row_SumRank_ResRate,
+t.* 
+from Example2
+ 
+-- FROM Example2 as t
 -- ,t as (
 --     select count(*)*0.8 as tot from hotAndLongtailGoods
 -- )
