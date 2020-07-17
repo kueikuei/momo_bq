@@ -51,8 +51,8 @@ goodsSlipHistoryList2 as (
 )
 ,hotAndLongtailGoods as(
     select 
-        ROW_NUMBER() OVER (ORDER BY Order_1y_Sum DESC) AS Order_1y_Row_Num,
-        ROW_NUMBER() OVER (ORDER BY order_3m_Sum DESC) AS Order_3m_Row_Num,
+        -- ROW_NUMBER() OVER (ORDER BY Order_1y_Sum DESC) AS Order_1y_Row_Num,
+        -- ROW_NUMBER() OVER (ORDER BY order_3m_Sum DESC) AS Order_3m_Row_Num,
         *
     from goodsSlipHistoryList2
 )
