@@ -58,7 +58,7 @@ goodsSlipHistoryList2 as (
 )
 select 
     RANK() OVER (ORDER BY order_3m_Sum DESC) AS rank,
-    DENSE_RANK() OVER (ORDER BY order_3m_Sum DESC) AS dense_rank ,
+    PERCENT_RANK() OVER (ORDER BY order_3m_Sum DESC) AS dense_rank ,
     *
 from hotAndLongtailGoods limit 1000
 -- ,t as (
