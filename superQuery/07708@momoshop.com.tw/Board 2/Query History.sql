@@ -5,4 +5,4 @@
 -- FROM momo-develop._script790dc6b1551f5eb0fd39117aeb08d41eed4d9beb.Example2 as t
 
 
-select counmt(*) from momo-develop._script790dc6b1551f5eb0fd39117aeb08d41eed4d9beb.Example2
+select count(*) from momo-develop._script790dc6b1551f5eb0fd39117aeb08d41eed4d9beb.Example2
