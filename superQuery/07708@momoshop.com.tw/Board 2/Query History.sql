@@ -1,1 +1,4 @@
-select * from `momo-develop:_script38e0a78e76c113a4f7e257ad73747adfa0272650.Example2`
+SELECT 
+    IF(date(INSERT_DATE)  >= date_sub(current_date, interval 1 month),true,false),
+    * 
+FROM `momo-develop._scriptcfd0a84ff2415dba64c139518b670410e782e721.GrayGoods`
