@@ -25,5 +25,5 @@ SELECT
 from t
 )
 
-select count(category) from a
+select category,count(category) from a
 group by category
