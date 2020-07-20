@@ -57,4 +57,4 @@ goodsSlipHistoryList2 as (
     from goodsSlipHistoryList2
 )
 
-select * from hotAndLongtailGoods
+select * from hotAndLongtailGoods limit 1000
