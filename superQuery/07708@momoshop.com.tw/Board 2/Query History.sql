@@ -18,4 +18,4 @@ from t
 )
 
 select * from a
-where category <> 0
+where category <> '0'
