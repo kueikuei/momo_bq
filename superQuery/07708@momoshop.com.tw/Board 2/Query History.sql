@@ -1,10 +1,12 @@
 SELECT 
     case when Order_3m_Row_Sum_Rank<(select count(*) from `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods`   ) * 0.2 then 1
-    when Order_3m_Row_Sum_Rank>(select count(*) from `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods`   ) * 0.8 then -1
+    when Order_3m_Row_Sum_Rank>(select count(*) from `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods`   ) * 0.2 then 0
     else 0 end as Order_3m_Row_Sum_Rank_Rate ,
     case when Order_1y_Row_SumRank<(select count(*) from `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods`   ) * 0.2 then 1
-    when Order_1y_Row_SumRank>(select count(*) from `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods`   ) * 0.8 then -1
+    when Order_1y_Row_SumRank>(select count(*) from `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods`   ) * 0.2 then 0
     else 0 end as Order_1y_Row_SumRank_Rate ,
+    IF(Order_1y_Sum=0, 'true', 'false') as Order_1y_Never_BeSold_Good,
+    IF(Order_3m_Sum=0, 'true', 'false') as Order_3m_Never_BeSold_Good,
     * 
 FROM `momo-develop._scripte54f6fb8d4fa08f21a73a943578694cd92ee7544.GrayGoods` 
 limit 1000
