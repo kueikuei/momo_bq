@@ -7,6 +7,9 @@ SELECT
     CASE
         WHEN (New_Goods_Or_Not = true AND Order_3m_Row_Sum_Rank_Rate = true AND Order_1y_Row_Sum_Rank_Rate = true AND Order_1y_Never_BeSold_Good = true AND Order_3m_Never_BeSold_Good = true) THEN '1'
         WHEN (New_Goods_Or_Not = true AND Order_3m_Row_Sum_Rank_Rate = true AND Order_1y_Row_Sum_Rank_Rate = true AND Order_1y_Never_BeSold_Good = true AND Order_3m_Never_BeSold_Good = false) THEN '2'
+        WHEN (New_Goods_Or_Not = true AND Order_3m_Row_Sum_Rank_Rate = true AND Order_1y_Row_Sum_Rank_Rate = true AND Order_1y_Never_BeSold_Good = false AND Order_3m_Never_BeSold_Good = false) THEN '3'
+        WHEN (New_Goods_Or_Not = true AND Order_3m_Row_Sum_Rank_Rate = true AND Order_1y_Row_Sum_Rank_Rate = false AND Order_1y_Never_BeSold_Good = false AND Order_3m_Never_BeSold_Good = false) THEN '4'
+        WHEN (New_Goods_Or_Not = true AND Order_3m_Row_Sum_Rank_Rate = false AND Order_1y_Row_Sum_Rank_Rate = false AND Order_1y_Never_BeSold_Good = false AND Order_3m_Never_BeSold_Good = false) THEN '5'
         ELSE '0'
         END
     AS category
