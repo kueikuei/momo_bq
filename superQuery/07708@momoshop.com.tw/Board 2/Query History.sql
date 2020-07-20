@@ -2,6 +2,7 @@ WITH t as(
     select * from `momo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anone14e1434_abf1_4555_b466_e6d1c0176ef8`
 )
 
+,a as(
 SELECT
     Full_Goodscode,
     CASE
@@ -14,4 +15,7 @@ SELECT
         END
     AS category
 from t
+)
+
+select * from a
 where category <> 0
