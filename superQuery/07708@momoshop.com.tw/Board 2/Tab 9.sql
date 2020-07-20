@@ -1,1 +1,1 @@
-SELECT * FROM `momo-develop.unboxing.dynamic_promo_boxout` LIMIT 1000
+SELECT COALESCE('A', 'B', 'C') as result
