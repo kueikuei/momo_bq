@@ -1,1 +1,1 @@
-SELECT COALESCE('A', 'B', 'C') as result
+SELECT COALESCE(0, 'B', 'C') as result
