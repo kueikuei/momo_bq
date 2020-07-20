@@ -1,1 +1,1 @@
-SELECT COALESCE(0, 'B', 'C') as result
+SELECT * FROM `momo-develop.inventoryPlanning.IP_goodsinfo` limit 1000
