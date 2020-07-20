@@ -14,3 +14,4 @@ SELECT
         END
     AS category
 from t
+where category <> 0
