@@ -21,5 +21,6 @@ AS category
 from t
 )
 
-select category,count(category) from a
+select category,CONCAT(CAST(count(category)/(select count(*) from a)*100 AS STRING),'%') as rate from a
 group by category
+order by category
