@@ -1,6 +1,6 @@
 -- SELECT * FROM `momo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anon69bc28a0_344e_4e78_b3de_a91ef8718384` LIMIT 1000
 WITH t as(
-    select * from `momo-develop.inventoryPlanning.grayGoods`
+    select * FROM `momo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anon69bc28a0_344e_4e78_b3de_a91ef8718384`
 )
 
 ,a as(
