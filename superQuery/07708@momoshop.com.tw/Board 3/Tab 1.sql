@@ -1,3 +1,3 @@
 select * 
 from `boxSaver.slipFinishInfo` 
-where orderNo = '200001491262'
+where slipNo = '200001491262'
