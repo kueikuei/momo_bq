@@ -20,7 +20,7 @@ slipNoInfo as (
   group by t.slipNo 
 )
 
-select * from dim
+select UNNEST(info) from slipNoInfo
 
 -- select t1.*
 -- from slipNoInfo as t1 
