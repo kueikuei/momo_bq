@@ -20,7 +20,7 @@ slipNoInfo as (
   group by t.slipNo 
 )
 
-select * from slipNoInfo
+select * from dim
 
 -- select t1.*
 -- from slipNoInfo as t1 
