@@ -3,5 +3,5 @@
 -- where slipNo = '200001491698'
 
 select * 
-from `boxSaver.1129slipInfo` 
+from `boxSaver.slipInfo` 
 where slipNo = '200001491698'
