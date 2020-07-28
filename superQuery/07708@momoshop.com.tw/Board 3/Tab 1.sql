@@ -16,10 +16,12 @@ getInfo as(
     from `boxSaver.slipFinishInfo` as t
     left join dim as t2
     on t.goodsCode = t2.GOODS_CODE
-    where slipNo is not null
+    -- where slipNo is not null
 )
--- select count(*) from getInfo
-select * from getInfo
+select count(*) from getInfo
+where WIDTH is null
+
+-- select * from getInfo
  
 -- delyQty 裝箱數量?
 -- 以每一個訂單作為一個單位
