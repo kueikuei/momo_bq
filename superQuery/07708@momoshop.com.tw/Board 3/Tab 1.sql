@@ -16,6 +16,7 @@ getInfo as(
     from `boxSaver.slipFinishInfo` as t
     left join dim as t2
     on t.goodsCode = t2.GOODS_CODE
+    where slipNo is not null
 )
 -- select count(*) from getInfo
 select * from getInfo
