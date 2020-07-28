@@ -19,7 +19,7 @@ getInfo as(
     where t.slipNo is not null
 )
 select count(*) from getInfo
--- where WIDTH is null
+where WIDTH is not null
 
 -- select * from getInfo
  
