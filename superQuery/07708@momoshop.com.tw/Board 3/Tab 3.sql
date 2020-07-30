@@ -1,2 +1,3 @@
-SELECT * FROM `momo-develop.ipacking.ipack_data` 
-where slipNo = '10000255227448'
+select t.newSlipNo 
+from boxSaver.addBoxInfo as t
+where t.orgSlipNo ='10000255227448')
