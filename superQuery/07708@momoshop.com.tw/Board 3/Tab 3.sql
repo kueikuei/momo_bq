@@ -1,1 +1,1 @@
-SELECT distinct * FROM `momo-develop.ipacking.ipack_data`
+SELECT count(distinct slipNo) FROM `momo-develop.ipacking.ipack_data`
