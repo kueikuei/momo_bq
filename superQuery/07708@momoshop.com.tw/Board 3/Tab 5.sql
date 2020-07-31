@@ -1,0 +1,1 @@
+select count(slipNo) from `momo-develop.boxSaver.slipFinishInfo`
