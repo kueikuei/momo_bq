@@ -1,1 +1,1 @@
-SELECT count(*) FROM `momo-develop.ipacking.ipack_data`
+SELECT count(distinct *) FROM `momo-develop.ipacking.ipack_data`
