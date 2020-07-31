@@ -9,4 +9,4 @@ with dim as
   from `oggSync.FUBON_TGOODS`  as t  
 )
 
-select * from dim limit 100
+select * from dim
