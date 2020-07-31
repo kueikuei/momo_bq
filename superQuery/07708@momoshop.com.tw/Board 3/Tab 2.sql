@@ -6,7 +6,7 @@ WITH t AS(
     order by num desc
 )
 
-select boxName , count(b.boxName) as num , CONCAT(count(b.boxName)/1852957*100,'%') as rate
+select boxName , count(boxName) as num , CONCAT(count(boxName)/1852957*100,'%') as rate
 from t
 group by boxName
 order by num desc
