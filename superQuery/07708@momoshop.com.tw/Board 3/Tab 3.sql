@@ -1,12 +1,2 @@
-WITH Q_unboxing as(
-    SELECT
-        slipNo,
-        count(slipNo) as num
-    from `momo-develop.ipacking.ipack_data` 
-    group by slipNo
-     having num > 1
-)
-select t1.slipNo, t2.newSlipNo
-from Q_unboxing as t1
-left join `boxSaver.addBoxInfo` as t2
-on t1.slipNo = t2.orgSlipNo
+select count(*) from `momo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anonda76c08e823d7e9043b21db1d5942a6b230e1506`
+where newSlipNo = Null
