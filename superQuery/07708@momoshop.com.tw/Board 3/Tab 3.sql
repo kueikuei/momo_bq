@@ -1,8 +1,1 @@
-select t.goodsCode , t.delyQty , t.orderNo, t.slipNo 
-from boxSaver.slipFinishInfo as t
--- where t.slipNo = '95000002846493' OR t.slipNo = '95000002846494'
-where t.slipNo in (
-	select t.newSlipNo 
-	from boxSaver.addBoxInfo as t
-	where t.orgSlipNo ='10000255227448'
-)
+SELECT count(*) FROM `momo-develop.ipacking.ipack_data`
