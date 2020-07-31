@@ -1,4 +1,4 @@
-
+CREATE TEMP TABLE new_ipak_slipNo(slipNo STRING);
 -- 找出在Q台拆箱 box，並且取得新的 slipNo
 WITH ipack_up_1 as(
     SELECT
@@ -28,7 +28,5 @@ ipack_equal_1 as(
     select slipNo from ipack_equal_1 
     UNION ALL
     select slipNo from newSlipNO 
-)
+)select * from new_ipak_slipNo;
 
-
-select * from new_ipak_slipNo
