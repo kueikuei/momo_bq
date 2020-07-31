@@ -18,7 +18,7 @@ ipack_equal_1 as(
 )
 , newSlipNO as(
     select t2.newSlipNo as slipNo
-    from ipack_1up as t1
+    from ipack_up_1 as t1
     left join `boxSaver.addBoxInfo` as t2
     on t1.slipNo = t2.orgSlipNo
     WHERE t2.newSlipNo is not null
