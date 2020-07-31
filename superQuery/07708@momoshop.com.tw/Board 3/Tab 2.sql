@@ -1,3 +1,5 @@
-select t.slipNo, b.boxName
+
+select t.slipNo, b.boxName, count(b.boxName) as num
 from momo-develop.ipacking.ipack_temp_new as t, unnest(t.info) as b
+where b.boxName is not null
 group by t.slipNo,b.boxName
