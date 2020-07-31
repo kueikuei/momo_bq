@@ -6,4 +6,6 @@ WITH Q_unboxing as(
     group by slipNo
      having num > 1
 )
-select sum(num) from Q_unboxing
+select t1.slipNo, t2.newSlipNo
+left join `boxSaver.addBoxInfo` as t2
+on t1.slipNo = t2.orgSlipNo
