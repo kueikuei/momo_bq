@@ -25,9 +25,7 @@ ipack_equal_1 as(
     on t1.slipNo = t2.orgSlipNo
     WHERE t2.newSlipNo is not null
 )
-, new_ipak_slipNo as(
-    select slipNo from ipack_equal_1 
+select slipNo from ipack_equal_1 
     UNION ALL
-    select slipNo from newSlipNO 
-)select * from new_ipak_slipNo;
-select * from new_ipak_slipNo
+select slipNo from newSlipNO; 
+select * from MyIpackSlipNo
