@@ -1,2 +1,2 @@
-select count(slipNo) from `momo-develop.boxSaver.slipFinishInfo`
-GROUP BY slipNo
+select count(distinct slipNo) from `momo-develop.boxSaver.slipFinishInfo`
+-- GROUP BY slipNo
