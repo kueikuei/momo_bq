@@ -17,7 +17,7 @@ with dim as
 -- 取得內容物的 goodscode 以及其 delyQty 裝箱數量
 -- 為何需要取得裝箱數量
 slipNoInfo as (
-  select  t.slipNo , array_agg(struct(t.goodsCode, t.delyQty)) as info   
+  select  t.slipNo , array_agg(struct(t.orderNo, t.goodsCode, t.delyQty)) as info   
   from `boxSaver.slipFinishInfo` as t
   where t.orderDate = '2020-07-14'
   group by t.slipNo 
@@ -29,4 +29,4 @@ slipNoInfo as (
   on t.slipNo = t2.slipNo
 )
 
-select distinct * from slipNoInfo
+select * from slipNoInfo
