@@ -15,11 +15,11 @@
 --     select t1.*, t2.*
 --     from `boxSaver.slipFinishInfo` as t1
 --     left join dim as t2 
---     on t1.goodsCode = t2.GOODS_CODE
+--     on t1.goodsCode = t2.GOODS_CODEmomo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anon05c0a3b26f28da7166f58c5060ef378e2df4d256
 -- ) 
 -- ,slipNoInfo as (
 WITH slipNoInfo as (
-  select  t.slipNo , array_agg(struct(t.orderNo, t.goodsCode, t.delyQty, t.WIDTH ,t.LENGTH ,t.HEIGHT, t.minProjectArea, t.lagestSide)) as info   
+  select  t.slipNo , array_agg(struct(t.orderNo, t.goodsCode, t.delyQty, t.WIDTH ,t.LENGTH ,t.HEIGHT, t.minProjectArea, t.lagestSide, t.boxName)) as info   
 --   from `boxSaver.slipFinishInfo` as t
   from `momo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anonev__U2D83CoqTRV2vbGDC_dNd3c0TnpjqgBVLTtYiuWypo` as t
 --   where t.orderDate = '2020-07-14'
