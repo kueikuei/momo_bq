@@ -1,2 +1,7 @@
-select * from `momo-develop.boxSaver.slipInfo`
-where slipNo = '10000263651799'
+select t.slipNo, t.goodsName , t.delyQty , t.orderNo 
+from boxSaver.slipInfo as t
+where t.slipNo in (
+	select t.newSlipNo 
+	from boxSaver.addBoxInfo as t
+	where t.orgSlipNo ='10000255227448'
+)
