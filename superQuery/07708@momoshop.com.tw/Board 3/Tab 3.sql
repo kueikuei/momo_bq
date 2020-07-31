@@ -7,5 +7,6 @@ WITH Q_unboxing as(
      having num > 1
 )
 select t1.slipNo, t2.newSlipNo
+from Q_unboxing as t1
 left join `boxSaver.addBoxInfo` as t2
 on t1.slipNo = t2.orgSlipNo
