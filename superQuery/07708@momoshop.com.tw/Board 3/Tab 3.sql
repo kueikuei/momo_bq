@@ -1,4 +1,2 @@
-select count(slipNo)  as num
-from `momo-develop.ipacking.ipack_data` 
-group by slipNo
-having num > 1
+select count(slipNo)
+from `momo-develop.ipacking.ipack_data`
