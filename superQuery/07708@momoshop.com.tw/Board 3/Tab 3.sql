@@ -14,7 +14,6 @@ ipack_equal_1 as(
         slipNo
     from `momo-develop.ipacking.ipack_data` 
     group by slipNo
-    having num  = 1
 )
 , newSlipNO as(
     select t2.newSlipNo as slipNo
