@@ -25,9 +25,9 @@ ipack_equal_1 as(
     WHERE t2.newSlipNo is not null
 )
 , new_ipak_slipNo as(
-    ipack_equal_1
+    select * from ipack_equal_1
     UNION ALL
-    newSlipNO
+    select * from newSlipNO
 )
 
 
