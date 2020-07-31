@@ -19,7 +19,8 @@ with dim as
 slipNoInfo as (
   select  t.slipNo , array_agg(struct(t.orderNo, t.goodsCode, t.delyQty)) as info   
   from `boxSaver.slipFinishInfo` as t
-  where t.orderDate = '2020-07-14'
+--   where t.orderDate = '2020-07-14'
+  where t.slipNo in (select * from `momo-develop._3b7a5bd540a8dfd341e57f295848b5793cf3d3ab.anon4ed9dcdea16f2430f50c78588a8abcff03db6267` limit 1)
   group by t.slipNo 
 )
 ,ttt as(
