@@ -1,4 +1,5 @@
-找出在Q台拆箱 box，並且取得新的 slipNo
+
+-- 找出在Q台拆箱 box，並且取得新的 slipNo
 WITH ipack_up_1 as(
     SELECT
         slipNo,
