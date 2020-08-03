@@ -1,9 +1,10 @@
-WITH t as(
-    SELECT 1 AS id, [0, 1, 1, 2, 3, 5] AS some_numbers
-    UNION ALL SELECT 2 AS id, [2, 4, 8, 16, 32] AS some_numbers
-    UNION ALL SELECT 3 AS id, [5, 10] AS some_numbers
-)
-
-select t.id, b
-from t,unnest(t.some_numbers) as b
--- select * from t
+SELECT "800M" AS race,
+    [STRUCT("Rudisha" as name, [23.4, 26.3, 26.4, 26.1] as splits),
+     STRUCT("Makhloufi" as name, [24.5, 25.4, 26.6, 26.1] as splits),
+     STRUCT("Murphy" as name, [23.9, 26.0, 27.0, 26.0] as splits),
+     STRUCT("Bosse" as name, [23.6, 26.2, 26.5, 27.1] as splits),
+     STRUCT("Rotich" as name, [24.7, 25.6, 26.9, 26.4] as splits),
+     STRUCT("Lewandowski" as name, [25.0, 25.7, 26.3, 27.2] as splits),
+     STRUCT("Kipketer" as name, [23.2, 26.1, 27.3, 29.4] as splits),
+     STRUCT("Berian" as name, [23.7, 26.1, 27.0, 29.3] as splits)]
+       AS participants
