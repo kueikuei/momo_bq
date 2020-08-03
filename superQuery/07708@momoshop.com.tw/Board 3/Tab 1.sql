@@ -4,6 +4,6 @@ WITH t as(
     UNION ALL SELECT 3 AS id, [5, 10] AS some_numbers
 )
 
--- select b.*
--- from unnest(t.some_numbers) as b
-select * from t
+select t.id, b
+from t,unnest(t.some_numbers) as b
+-- select * from t
