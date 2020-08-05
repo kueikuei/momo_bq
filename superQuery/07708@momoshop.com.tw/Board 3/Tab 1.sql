@@ -1,1 +1,2 @@
-select * from `momo-develop.ipacking.ipack_temp_new` limit 10
+select * from `momo-develop.boxSaver.boxkind`
+where BOX_NAME = 'F-412'
