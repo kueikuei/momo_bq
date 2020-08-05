@@ -1,5 +1,8 @@
-SELECT 
-CONCAT('https://stackoverflow.com/questions/', CAST(id as STRING)) as url, view_count 
-FROM `bigquery-public-data.stackoverflow.posts_questions` 
-WHERE tags like '%google-bigquery%' 
-ORDER BY favorite_count DESC LIMIT 10
+with t as(
+    select t.slipNo, b.*
+    from momo-develop.ipacking.ipack_temp as t, unnest(t.info) as b
+)
+
+select orderNo,slipNO 
+from t
+GROUP BY orderNo,slipNO
