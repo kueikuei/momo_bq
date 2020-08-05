@@ -1,2 +1,3 @@
-select * from `momo-develop.boxSaver.boxkind`
-where BOX_NAME = 'F-412'
+select * 
+from `momo-develop.ipacking.ipack_temp_byOrderNo`
+where orderNo = '20200217625793'
