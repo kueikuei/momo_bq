@@ -5,5 +5,11 @@ WITH t1 as(
 )
 
 
-select * from t1
-where boxName is null
+-- select * from t1
+-- where boxName is null
+
+
+select boxName, count(boxName) as num
+from t1
+group by boxName
+order by num desc
