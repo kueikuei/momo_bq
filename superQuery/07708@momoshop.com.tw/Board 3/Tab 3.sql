@@ -3,4 +3,4 @@ WITH t1 as(
   from `momo-develop.ipacking.ipack_temp_byOrderNo` as t, unnest(info) as b  
   -- where slipNo = '10000265366378'
 )
-select coumt(*) from t1
+select count(*) from t1
