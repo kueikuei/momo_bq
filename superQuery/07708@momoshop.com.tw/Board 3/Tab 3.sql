@@ -9,7 +9,7 @@ select boxName, count(boxName)/(select count(boxName) from t1)*100 as rate
 from t1
 where boxName is not null
 group by boxName
-order by num desc
+order by rate desc
 
 
 -- WITH t1 as(
