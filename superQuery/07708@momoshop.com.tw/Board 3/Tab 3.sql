@@ -13,3 +13,4 @@ group by slipNo,boxName
 select boxName, count(boxName)/(select count(boxName) from t1)*100 as rate, count(boxName) as num
 from t2
 group by boxName
+order by rate desc
