@@ -1,1 +1,3 @@
-select * from boxSaver.boxkind
+select * from 
+boxSaver.boxkind
+where BOX_NAME = 'S-504'
