@@ -1,3 +1,3 @@
-select * from 
-boxSaver.boxkind
-where BOX_NAME = 'S-503'
+
+select *
+from `momo-develop.ipacking.ipack_temp_new` as t limit 100
