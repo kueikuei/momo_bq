@@ -5,5 +5,5 @@ WITH t1 as(
 )
 
 
-select count(boxName) from t1
-where boxName = 'null'
+select * from t1
+where boxName is null
