@@ -1,0 +1,1 @@
+select count(t.*) from ipacking.ipack_res_final4 as t
