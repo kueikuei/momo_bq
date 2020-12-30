@@ -1,0 +1,1 @@
+SELECT * FROM `momo-develop.boxSaver.regularQC_slipInfo` LIMIT 1000
