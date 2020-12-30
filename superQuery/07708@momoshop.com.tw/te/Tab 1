@@ -1,0 +1,53 @@
+-- SETCODE 拆箱驗證流程
+
+DECLARE var_setcode STRING;
+DECLARE var_time INT64;
+SET var_setcode = '8180062';
+SET var_time = 90;
+
+with t as(
+select * FROM `momo-develop.boxSaver.slipInfo` 
+where setGoodCode = var_setcode
+and date(orderdate)>=DATE_ADD(CURRENT_DATE(), INTERVAL -var_time DAY) 
+and setGoodFlag = 'SET'
+and delyType = '乙配'
+AND isBoxOut = 0
+AND orderno not in (
+    select distinct orderno
+    FROM `momo-develop.boxSaver.slipInfo`
+    where  slipNo like '9%'
+    and date(orderdate)>=DATE_ADD(CURRENT_DATE(), INTERVAL -var_time DAY) 
+  )
+)
+,d as(
+select orderno, slipno 
+from t
+group by orderno, slipno
+)
+-- 取得出箱量大於1的訂單
+,e as(
+select * from t
+where orderno in
+(
+select orderno
+from d
+group by orderno
+having count(orderno)> 1
+)
+)
+,i as(
+select orderNo,slipNo,whCode,goodsName,goodsCode,goodsdtCode,concat(goodsCode,goodsdtCode) as full_goodscode,setGoodCode
+from e
+)
+select 
+  orderno, 
+  count(distinct whCode) as whCode_num,
+  count(distinct full_goodscode) as full_goodscode_num,
+  count(distinct goodsCode) as goods_num,
+  array_agg(struct(whCode,goodsName,full_goodscode,setGoodCode)) as info
+from i
+group by orderno
+
+
+
+
